@@ -191,8 +191,8 @@ class MULTIPATH_13(app_manager.RyuApp):
                 self.logger.info("Dpid is not in mac_to_port")
                 return
 
-            out_port = None
-            if eth.dst in mac_to_port_table:
+            #out_port = None
+            #if eth.dst in mac_to_port_table:
                 # if dpid == 1 and in_port == 1:
                 #     if self.FLAGS is True:
                 #         self.send_group_mod(datapath)
@@ -217,7 +217,9 @@ class MULTIPATH_13(app_manager.RyuApp):
                     # self.add_flow(datapath, 0, 1, match, actions)
                     # self.send_packet_out(datapath, msg.buffer_id, in_port,
                     #                  out_port, msg.data)
-
+                    
+            out_port = None
+            if eth.dst in mac_to_port_table:
                 if dpid == 1 and in_port == 1:
                     if eth.dst == 4 or eth.dst == 5 or eth.dst == 6:
                         actions = [parser.OFPActionOutput(4)]
